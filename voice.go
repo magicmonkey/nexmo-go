@@ -99,18 +99,18 @@ type VoiceErrorResponse struct {
 // VoiceErrorInvalidParamsResponse can come with a 400 response if
 // it is caused by some invalid_parameters
 type VoiceErrorInvalidParamsResponse struct {
-	Type              int                 `json:"type, omitempty"`
-	Title             string              `json:"title, omitempty"`
-	Detail            string              `json:"detail, omitempty"`
-	Instance          string              `json:"instance, omitempty"`
-	InvalidParameters []map[string]string `json:"invalid_parameters, omitempty"`
+	Type              int                 `json:"type,omitempty"`
+	Title             string              `json:"title,omitempty"`
+	Detail            string              `json:"detail,omitempty"`
+	Instance          string              `json:"instance,omitempty"`
+	InvalidParameters []map[string]string `json:"invalid_parameters,omitempty"`
 }
 
 // VoiceErrorGeneralResponse covers some common error types that come
 // from the webserver/gateway rather than the API itself
 type VoiceErrorGeneralResponse struct {
-	Type  string `json:"type, omitempty"`
-	Title string `json:"error_title, omitempty"`
+	Type  string `json:"type,omitempty"`
+	Title string `json:"error_title,omitempty"`
 }
 
 func (client *VoiceClient) createCallCommon(opts CreateCallOpts) voice.CreateCallRequestBase {
@@ -369,9 +369,6 @@ func (client *VoiceClient) voiceAction(action string, uuid string) (ModifyCallRe
 		// not a whole lot to return as it's a 204, this branch is success
 		return ModifyCallResponse{Status: "0"}, VoiceErrorResponse{}, nil
 	}
-
-	// this is a backstop, we shouldn't end up here
-	return ModifyCallResponse{}, VoiceErrorResponse{}, errors.New("An unknown error occurred. Please check the documentation and try again")
 }
 
 type PlayAudioOpts struct {
