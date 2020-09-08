@@ -5,7 +5,9 @@ on:
   pull_request: {}
 
 jobs:
-  lint:
+  test:
+    name: Run tests
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
