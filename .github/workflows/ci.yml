@@ -19,7 +19,7 @@ jobs:
       - run: go vet
       - uses: golangci/golangci-lint-action@v2
         with:
-          version: v2.2
+          version: v2.2.0
 
   test:
     name: Run tests
