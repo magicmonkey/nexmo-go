@@ -17,7 +17,10 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
       - run: go vet
-      - uses: actions-contrib/golangci-lint@v1
+      - uses: golangci/golangci-lint-action@v2
+        with:
+          version: v2.2
+
   test:
     name: Run tests
     runs-on: ubuntu-20.04
