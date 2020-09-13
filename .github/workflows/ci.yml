@@ -5,8 +5,8 @@ on:
   pull_request: {}
 
 jobs:
-  lint:
-    name: Standards checks
+  vet:
+    name: Go vet
     runs-on: ubuntu-20.04
     strategy:
       matrix:
@@ -17,6 +17,18 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
       - run: go vet
+
+  lint:
+    name: Go lint
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        go: ["1.11", "1.12", "1.13", "1.14"]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
       - uses: golangci/golangci-lint-action@v2
         with:
           version: v1.29
